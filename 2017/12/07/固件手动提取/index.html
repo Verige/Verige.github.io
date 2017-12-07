@@ -15,12 +15,12 @@
 
 
 
-<meta name="description" content="title: 固件提取date: 2017-12-07 15:09:41 tags:固件提取手动提取用strings命令提取文件内容，并用grep确定文件系统类型。由hsqs签名头判定文件系统很可能为squashfs，使用hexdump命令查看squashfs文件系统开始处为0xoo160090,如下图由于squasf">
+<meta name="description" content="固件提取手动提取用strings命令提取文件内容，并用grep确定文件系统类型。由hsqs签名头判定文件系统很可能为squashfs，使用hexdump命令查看squashfs文件系统开始处为0xoo160090,如下图由于squasfs文件系统的头部检验不会超过100字节，所以继续从中提取出从0x00160090处开">
 <meta property="og:type" content="article">
 <meta property="og:title" content="固件手动提取">
 <meta property="og:url" content="http://yoursite.com/2017/12/07/固件手动提取/index.html">
 <meta property="og:site_name" content="Verige">
-<meta property="og:description" content="title: 固件提取date: 2017-12-07 15:09:41 tags:固件提取手动提取用strings命令提取文件内容，并用grep确定文件系统类型。由hsqs签名头判定文件系统很可能为squashfs，使用hexdump命令查看squashfs文件系统开始处为0xoo160090,如下图由于squasfs文件系统的头部检验不会超过100字节，所以继续从中提取出从0x0016009">
+<meta property="og:description" content="固件提取手动提取用strings命令提取文件内容，并用grep确定文件系统类型。由hsqs签名头判定文件系统很可能为squashfs，使用hexdump命令查看squashfs文件系统开始处为0xoo160090,如下图由于squasfs文件系统的头部检验不会超过100字节，所以继续从中提取出从0x00160090处开始的100字节可见成功生成了sqush文件。接着使用file命令鉴定该文件可见固">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2017/12/07/固件手动提取/固件手动提取/15004545456127/1.png">
 <meta property="og:image" content="http://yoursite.com/2017/12/07/固件手动提取/固件手动提取/15004545456127/2.png">
@@ -31,10 +31,10 @@
 <meta property="og:image" content="http://yoursite.com/2017/12/07/固件手动提取/固件手动提取/15004545456127/7.png">
 <meta property="og:image" content="http://yoursite.com/2017/12/07/固件手动提取/固件手动提取/15004545456127/8.png">
 <meta property="og:image" content="http://yoursite.com/2017/12/07/固件手动提取/固件手动提取／15004545456127/9.png">
-<meta property="og:updated_time" content="2017-12-07T07:36:30.000Z">
+<meta property="og:updated_time" content="2017-12-07T07:41:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="固件手动提取">
-<meta name="twitter:description" content="title: 固件提取date: 2017-12-07 15:09:41 tags:固件提取手动提取用strings命令提取文件内容，并用grep确定文件系统类型。由hsqs签名头判定文件系统很可能为squashfs，使用hexdump命令查看squashfs文件系统开始处为0xoo160090,如下图由于squasfs文件系统的头部检验不会超过100字节，所以继续从中提取出从0x0016009">
+<meta name="twitter:description" content="固件提取手动提取用strings命令提取文件内容，并用grep确定文件系统类型。由hsqs签名头判定文件系统很可能为squashfs，使用hexdump命令查看squashfs文件系统开始处为0xoo160090,如下图由于squasfs文件系统的头部检验不会超过100字节，所以继续从中提取出从0x00160090处开始的100字节可见成功生成了sqush文件。接着使用file命令鉴定该文件可见固">
 <meta name="twitter:image" content="http://yoursite.com/2017/12/07/固件手动提取/固件手动提取/15004545456127/1.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -294,9 +294,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <hr>
-<p>title: 固件提取<br>date: 2017-12-07 15:09:41</p>
-<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><h1 id="固件提取"><a href="#固件提取" class="headerlink" title="固件提取"></a>固件提取</h1><h2 id="手动提取"><a href="#手动提取" class="headerlink" title="手动提取"></a>手动提取</h2><p>用strings命令提取文件内容，并用grep确定文件系统类型。<br><img src="固件手动提取/15004545456127/1.png" alt="1"><br>由hsqs签名头判定文件系统很可能为squashfs，使用hexdump命令查看squashfs文件系统开始处为0xoo160090,如下图<br><img src="固件手动提取/15004545456127/2.png" alt="2"><br>由于squasfs文件系统的头部检验不会超过100字节，所以继续从中提取出从0x00160090处开始的100字节<br><img src="固件手动提取/15004545456127/3.png" alt="3"><br>可见成功生成了sqush文件。<br><img src="固件手动提取/15004545456127/4.png" alt="4"><br>接着使用file命令鉴定该文件<br><img src="固件手动提取/15004545456127/5.png" alt="5"><br>可见固件文件系统确为squashfs且大小为6163838字节<br>因此使用dd命令复制数据块<br><img src="固件手动提取/15004545456127/6.png" alt="6"><br>属于squashfs文件系统的数据已经成功提取出来了，接下来就是还原squashfs文件系统的根文件系统，从中提取出来的kernel.squash使用的是lzma压缩方式，这里使用firmware-mod-kit进行解压。<br><img src="固件手动提取/15004545456127/7.png" alt="7"><br><img src="固件手动提取/15004545456127/8.png" alt="8"><br>解压后得到的squashfs-root文件夹就是squashfs文件系统中包含根文件系统的所有必备的目录和应用程序。<br><img src="固件手动提取／15004545456127/9.png" alt="9"></p>
+        <h1 id="固件提取"><a href="#固件提取" class="headerlink" title="固件提取"></a>固件提取</h1><h2 id="手动提取"><a href="#手动提取" class="headerlink" title="手动提取"></a>手动提取</h2><p>用strings命令提取文件内容，并用grep确定文件系统类型。<br><img src="固件手动提取/15004545456127/1.png" alt="1"><br>由hsqs签名头判定文件系统很可能为squashfs，使用hexdump命令查看squashfs文件系统开始处为0xoo160090,如下图<br><img src="固件手动提取/15004545456127/2.png" alt="2"><br>由于squasfs文件系统的头部检验不会超过100字节，所以继续从中提取出从0x00160090处开始的100字节<br><img src="固件手动提取/15004545456127/3.png" alt="3"><br>可见成功生成了sqush文件。<br><img src="固件手动提取/15004545456127/4.png" alt="4"><br>接着使用file命令鉴定该文件<br><img src="固件手动提取/15004545456127/5.png" alt="5"><br>可见固件文件系统确为squashfs且大小为6163838字节<br>因此使用dd命令复制数据块<br><img src="固件手动提取/15004545456127/6.png" alt="6"><br>属于squashfs文件系统的数据已经成功提取出来了，接下来就是还原squashfs文件系统的根文件系统，从中提取出来的kernel.squash使用的是lzma压缩方式，这里使用firmware-mod-kit进行解压。<br><img src="固件手动提取/15004545456127/7.png" alt="7"><br><img src="固件手动提取/15004545456127/8.png" alt="8"><br>解压后得到的squashfs-root文件夹就是squashfs文件系统中包含根文件系统的所有必备的目录和应用程序。<br><img src="固件手动提取／15004545456127/9.png" alt="9"></p>
 
       
     </div>
@@ -308,7 +306,7 @@
         <p><span>本文标题:</span><a href="/2017/12/07/固件手动提取/">固件手动提取</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">杭虎</a></p>
         <p><span>发布时间:</span>2017-12-07, 15:33:25</p>
-        <p><span>最后更新:</span>2017-12-07, 15:36:30</p>
+        <p><span>最后更新:</span>2017-12-07, 15:41:53</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/12/07/固件手动提取/" title="固件手动提取">http://yoursite.com/2017/12/07/固件手动提取/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/12/07/固件手动提取/　　作者: 杭虎" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -338,7 +336,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#tags"><span class="toc-number">1.</span> <span class="toc-text">tags:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#固件提取"><span class="toc-number"></span> <span class="toc-text">固件提取</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#手动提取"><span class="toc-number">1.</span> <span class="toc-text">手动提取</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#固件提取"><span class="toc-number">1.</span> <span class="toc-text">固件提取</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#手动提取"><span class="toc-number">1.1.</span> <span class="toc-text">手动提取</span></a></li></ol></li></ol>
         
     </div>
     <style>
