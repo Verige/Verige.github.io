@@ -251,6 +251,61 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-TRy" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/12/07/TRy/" class="article-date">
+      <time datetime="2017-12-07T07:00:14.000Z" itemprop="datePublished">2017-12-07</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/07/TRy/">TRy</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -289,6 +344,51 @@
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-固件提取" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/07/19/固件提取/" class="article-date">
+      <time datetime="2017-07-19T08:55:45.000Z" itemprop="datePublished">2017-07-19</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="固件提取"><a href="#固件提取" class="headerlink" title="固件提取"></a>固件提取</h1><h2 id="手动提取"><a href="#手动提取" class="headerlink" title="手动提取"></a>手动提取</h2><p>用strings命令提取文件内容，并用grep确定文件系统类型。<br><img src="media/15004545456127/1.png" alt="1"><br>由hsqs签名头判定文件系统很可能为squashfs，使用hexdump命令查看squashfs文件系统开始处为0xoo160090,如下图<br><img src="media/15004545456127/2.png" alt="2"><br>由于squasfs文件系统的头部检验不会超过100字节，所以继续从中提取出从0x00160090处开始的100字节<br><img src="media/15004545456127/3.png" alt="3"><br>可见成功生成了sqush文件。<br><img src="media/15004545456127/4.png" alt="4"><br>接着使用file命令鉴定该文件<br><img src="media/15004545456127/5.png" alt="5"><br>可见固件文件系统确为squashfs且大小为6163838字节<br>因此使用dd命令复制数据块<br><img src="media/15004545456127/6.png" alt="6"><br>属于squashfs文件系统的数据已经成功提取出来了，接下来就是还原squashfs文件系统的根文件系统，从中提取出来的kernel.squash使用的是lzma压缩方式，这里使用firmware-mod-kit进行解压。<br><img src="media/15004545456127/7.png" alt="7"><br><img src="media/15004545456127/8.png" alt="8"><br>解压后得到的squashfs-root文件夹就是squashfs文件系统中包含根文件系统的所有必备的目录和应用程序。<br><img src="media/15004545456127/9.png" alt="9"></p>
 
       
     </div>
